@@ -4,7 +4,7 @@ const { download } = require('electron-dl');
 
 const GitHubApi = () => {
   const options = {
-    url: 'https://api.github.com/repos/rbiggers/electron-pandora/releases/latest',
+    url: 'https://api.github.com/repos/rbiggers/electron-gmail/releases/latest',
     headers: {
       'User-Agent': 'request',
     },

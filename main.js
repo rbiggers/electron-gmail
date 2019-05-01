@@ -5,7 +5,6 @@ const {
   dialog,
   BrowserView,
   BrowserWindow,
-  globalShortcut,
 } = require('electron');
 
 const path = require('path');
@@ -15,14 +14,14 @@ const GitHubApi = require('./GitHubApi');
 
 const debug = /--debug/.test(process.argv[2]);
 
-const targetUrl = 'https://www.pandora.com/account/sign-in';
+const targetUrl = 'https://www.google.com/gmail/about/#';
 
-if (process.mas) app.setName('Electron Pandora');
+if (process.mas) app.setName('Electron Gmail');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null;
-let pandoraView = null;
+let gmailView = null;
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
@@ -96,59 +95,35 @@ function checkForUpdates() {
     .catch(error => console.error('Error: ', error));
 }
 
-function registerGlobalShortcuts() {
-  globalShortcut.register('MediaPlayPause', () => {
-    mainWindow.webContents.sendInputEvent({
-      type: 'keyDown',
-      keyCode: '\u0020', // spacebar code
-    });
-    mainWindow.webContents.sendInputEvent({
-      type: 'keyUp',
-      keyCode: '\u0020', // spacebar code
-    });
-  });
-
-  globalShortcut.register('MediaNextTrack', () => {
-    mainWindow.webContents.sendInputEvent({
-      type: 'keyDown',
-      keyCode: 'right',
-    });
-    mainWindow.webContents.sendInputEvent({
-      type: 'keyUp',
-      keyCode: 'right',
-    });
-  });
-}
-
 function createBrowserView() {
   const mainWindowBounds = mainWindow.getBounds();
 
-  pandoraView = new BrowserView({
+  gmailView = new BrowserView({
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
     },
   });
 
-  mainWindow.setBrowserView(pandoraView);
+  mainWindow.setBrowserView(gmailView);
 
   const desiredWidth = debug ? Math.round(mainWindowBounds.width * 0.7) : mainWindowBounds.width;
 
-  pandoraView.setBounds({
+  gmailView.setBounds({
     x: 0,
     y: 0,
     width: desiredWidth,
     height: mainWindowBounds.height,
   });
 
-  pandoraView.setAutoResize({
+  gmailView.setAutoResize({
     width: true,
     height: true,
   });
 
-  pandoraView.webContents.loadURL(targetUrl);
+  gmailView.webContents.loadURL(targetUrl);
 
-  if (debug) pandoraView.webContents.openDevTools({ mode: 'right' });
+  if (debug) gmailView.webContents.openDevTools({ mode: 'right' });
 }
 
 function createDefaultMenu() {
@@ -195,15 +170,15 @@ function createDefaultMenu() {
       submenu: [
         {
           label: 'Learn More',
-          click() { shell.openExternal('https://github.com/rbiggers/electron-pandora'); },
+          click() { shell.openExternal('https://github.com/rbiggers/electron-gmail'); },
         },
         {
           label: 'Documentation',
-          click() { shell.openExternal('https://github.com/rbiggers/electron-pandora/blob/master/README.md'); },
+          click() { shell.openExternal('https://github.com/rbiggers/electron-gmail/blob/master/README.md'); },
         },
         {
           label: 'Search Issues',
-          click() { shell.openExternal('https://github.com/rbiggers/electron-pandora/issues'); },
+          click() { shell.openExternal('https://github.com/rbiggers/electron-gmail/issues'); },
         },
         {
           label: 'Check for Updates',
@@ -289,8 +264,6 @@ function initialize() {
       // when you should delete the corresponding element.
       mainWindow = null;
     });
-
-    registerGlobalShortcuts();
 
     createBrowserView();
 

@@ -1,14 +1,14 @@
 <p align="center">
   <img src="assets/icon/icon.png" width="64">
-  <h3 align="center">electron-pandora</h3>
-  <p align="center">A Desktop app for Pandora<p>
+  <h3 align="center">electron-gmail</h3>
+  <p align="center">A Desktop app for Gmail<p>
 </p>
 
 [![license](https://img.shields.io/github/license/rbiggers/electron-pandora.svg)](https://mit-license.org/)
 
 ## Download
 
-[Download latest release](https://github.com/rbiggers/electron-pandora/releases) 
+[Download latest release](https://github.com/rbiggers/electron-gmail/releases) 
  
 ## Screenshot
 
@@ -24,9 +24,9 @@ I used [nodemon](https://nodemon.io/) for this development. It is a pretty cool 
 
 ```bash
 # Clone this repository
-git clone https://github.com/rbiggers/electron-pandora.git
+git clone https://github.com/rbiggers/electron-gmail.git
 # Go into the repository
-cd electron-pandora
+cd electron-gmail
 # Install dependencies
 npm install
 # Run the app
@@ -42,4 +42,4 @@ npm run dist
 ```
 
 #### License [MIT](LICENSE.md)
- 
+ icon
