@@ -1,0 +1,82 @@
+{
+  "name": "Pandora",
+  "version": "v0.2.1",
+  "description": "Multi-platform desktop version of Pandora Music",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --debug",
+    "watch": "nodemon --exec 'electron .'",
+    "watch:dev": "nodemon --exec 'electron . --debug'",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "build --dir",
+    "dist": "rm -rf dist/ && electron-builder -mlw && npm run zip:all",
+    "zip:all": "mkdir dist/bin && npm run zip:win && npm run zip:mac && npm run zip:linux && npm run zip:appimg",
+    "zip:win": "cd dist/ && zip -r -X \"bin/Pandora-win32.zip\" . -x \"win-unpacked/*\" -i \"*.exe\"",
+    "zip:mac": "cd dist/ && zip -r -X \"bin/Pandora-darwin.zip\" . -i \"*.dmg\"",
+    "zip:linux": "cd dist/ && zip -r -X \"bin/Pandora-linux.zip\" . -i \"*.deb\"",
+    "zip:appimg": "cd dist/ && zip -r -X \"bin/Pandora-app-img.zip\" . -i \"*.AppImage\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "org.rbiggers.pandora",
+    "mac": {
+      "category": "public.app-category.music",
+      "icon": "assets/icon/icon.icns"
+    },
+    "linux": {
+      "maintainer": "russell.biggers@gmail.com",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "icon": "assets/icon/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "electron": "^4.0.4",
+    "electron-builder": "20.40.2",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.17.2",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "devtron": "^1.4.0",
+    "electron-dl": "1.14.0",
+    "glob": "^7.1.3",
+    "mocha": "6.1.4",
+    "request": "2.88.0",
+    "request-promise": "4.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbiggers/electron-pandora.git"
+  },
+  "keywords": [],
+  "author": "Russ Biggers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rbiggers/electron-pandora/issues"
+  },
+  "homepage": "https://github.com/rbiggers/electron-pandora#readme"
+}

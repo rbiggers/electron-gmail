@@ -1,0 +1,13 @@
+* {margin: 0; padding: 0; border: 0; vertical-align: baseline;}
+html {box-sizing: border-box;}
+*, *:before, *:after {box-sizing: inherit;}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    height: 25px;
+    -webkit-app-region: drag;
+}
