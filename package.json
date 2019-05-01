@@ -1,6 +1,6 @@
 {
-  "name": "Pandora",
-  "version": "v0.2.1",
+  "name": "Gmail",
+  "version": "v0.0.1",
   "description": "Multi-platform desktop version of Pandora Music",
   "main": "main.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
-    "appId": "org.rbiggers.pandora",
+    "appId": "org.rbiggers.gmail",
     "mac": {
       "category": "public.app-category.music",
       "icon": "assets/icon/icon.icns"
@@ -70,13 +70,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rbiggers/electron-pandora.git"
+    "url": "git+https://github.com/rbiggers/electron-gmail.git"
   },
   "keywords": [],
   "author": "Russ Biggers",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rbiggers/electron-pandora/issues"
+    "url": "https://github.com/rbiggers/electron-gmail/issues"
   },
-  "homepage": "https://github.com/rbiggers/electron-pandora#readme"
+  "homepage": "https://github.com/rbiggers/electron-gmail#readme"
 }
